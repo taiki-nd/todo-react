@@ -6,8 +6,8 @@ import { CompleteTodoes } from "./components/CompleteTodoes";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
-  const [incompleteTodoes, setIncompleteTodoes] = useState(["todo", "todo2"]);
-  const [completeTodoes, setCompleteTodoes] = useState(["todo3"]);
+  const [incompleteTodoes, setIncompleteTodoes] = useState([]);
+  const [completeTodoes, setCompleteTodoes] = useState([]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
