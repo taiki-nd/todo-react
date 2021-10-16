@@ -2,6 +2,7 @@ import React, { useImperativeHandle, useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/inputTodo";
 import { IncompleteTodoes } from "./components/IncompleteTodoes";
+import { CompleteTodoes } from "./components/CompleteTodoes";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -59,19 +60,7 @@ export const App = () => {
         onClickDelete={onClickDelete}
       />
 
-      <div className="complete_area">
-        <p className="title">未完了のToDo</p>
-        <ul>
-          {completeTodoes.map((todo, index) => {
-            return (
-              <div key={todo} className="list_row">
-                <li>{todo}</li>
-                <button onClick={() => onClickBack(index)}>戻す</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <CompleteTodoes todo={completeTodoes} onClickBack={onClickBack} />
     </>
   );
 };
