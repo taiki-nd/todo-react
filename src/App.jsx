@@ -27,10 +27,22 @@ export const App = () => {
     const newIncompleteTodoes = [...incompleteTodoes];
     newIncompleteTodoes.splice(index, 1);
 
-    const newComompleteTodoes = [...completeTodoes, incompleteTodoes[index]];
-    setCompleteTodoes(newComompleteTodoes);
+    const newcomompleteTodoes = [...completeTodoes, incompleteTodoes[index]];
 
+    setCompleteTodoes(newcomompleteTodoes);
     setIncompleteTodoes(newIncompleteTodoes);
+  };
+
+  const onClickBack = (index) => {
+    const newBackTodoes = [...completeTodoes];
+    newBackTodoes.splice(index, 1);
+
+    const newBackIncompleteTodoes = [
+      ...incompleteTodoes,
+      completeTodoes[index]
+    ];
+    setIncompleteTodoes(newBackIncompleteTodoes);
+    setCompleteTodoes(newBackTodoes);
   };
 
   return (
@@ -62,11 +74,11 @@ export const App = () => {
       <div className="complete_area">
         <p className="title">未完了のToDo</p>
         <ul>
-          {completeTodoes.map((todo) => {
+          {completeTodoes.map((todo, index) => {
             return (
               <div key={todo} className="list_row">
                 <li>{todo}</li>
-                <button>戻す</button>
+                <button onClick={() => onClickBack(index)}>戻す</button>
               </div>
             );
           })}
